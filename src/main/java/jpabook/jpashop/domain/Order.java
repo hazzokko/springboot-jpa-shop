@@ -23,10 +23,10 @@ public class Order {
     @JoinColumn(name = "member_id") // 매핑할 FK 이름 지정, 여기에 값을 세팅하면 member_id FK 값이 변경된다.
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
